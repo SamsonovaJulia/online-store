@@ -5,9 +5,10 @@ function Header() {
   return (
     <HeaderStyled>
       <p className="logo">Logo</p>
-      
-      <p>Login</p>
-      <p className="basket">Basket</p>
+      <div className="basketLoginContainer">
+        <p>Login</p>
+        <p>Basket</p>
+      </div>
     </HeaderStyled>
   );
 }
