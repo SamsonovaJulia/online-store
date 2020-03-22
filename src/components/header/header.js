@@ -4,10 +4,10 @@ import { HeaderStyled } from "./header.styled.js";
 function Header() {
   return (
     <HeaderStyled>
-      <p className="logo">Logo</p>
+      <p className="logo">LOGO</p>
       <div className="basketLoginContainer">
-        <p>Login</p>
-        <p>Basket</p>
+        <a href='/'>Login</a>
+        <a href='/'>Basket</a>
       </div>
     </HeaderStyled>
   );

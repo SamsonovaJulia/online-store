@@ -7,6 +7,7 @@ export const rem = pxSize => {
   export const Theme = {
     fonts: {
       body: "Titillium Web, sans-serif",
+      logo: "Pacifico, cursive",
       heading: "inherit"
     },
     fontSizes: [
