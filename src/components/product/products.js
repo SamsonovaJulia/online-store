@@ -1,30 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProductsStyled, Product, Price, Img } from "./products.styled.js";
 import ParseStoreData from "../../utils/parseStoreData";
+import ProductPage from "./product-page/product-page";
 
 function Products(goods) {
+  const [product, setProduct] = useState();
   const goodsArray = ParseStoreData(goods);
 
   function getProduct(item) {
-    const name = item.name;
-    const img = item.image;
-    const hoverImage = item.hoverImage;
-    const price = Number(item.price);
+    const { name, image, hoverImage, price } = item;
     return (
-      <Product>
+      <Product onClick={() => setProduct(item)} key={name}>
         <Img>
-          <img src={img} alt={name}></img>
-          <img src={hoverImage} class="img-top" alt={name}></img>
+          <img src={image} alt={name}></img>
+          <img src={hoverImage} className="img-top" alt={name}></img>
         </Img>
         <div>
           <p>{name}</p>
-          <Price>p. {price}</Price>
+          <Price>p. {Number(price)}</Price>
         </div>
       </Product>
     );
   }
 
-  return <ProductsStyled>{goodsArray.map(getProduct)}</ProductsStyled>;
+  return (
+    <ProductsStyled>
+      {goodsArray.map(getProduct)}
+      <ProductPage product={product} />
+    </ProductsStyled>
+  );
 }
 
 export default Products;
