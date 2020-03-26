@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import instance from "./axios-order";
-import { AppStyle } from "./App.styled.js";
+import { AppStyle, Main } from "./App.styled.js";
 import Header from "./components/header/header.js";
+import Products from "./components/product/products.js";
+import Filter from "./components/filter/filter";
 
 function App() {
   const [storeData, setStoreData] = useState();
@@ -14,10 +16,13 @@ function App() {
     getStoreData();
   }, []);
 
-  console.log("storeData", storeData);
   return (
     <AppStyle>
       <Header />
+      <Main>
+        <Filter />
+        <Products goods={storeData} />
+      </Main>
     </AppStyle>
   );
 }
