@@ -10,13 +10,15 @@ import {
 function ProductPage({ product }) {
   if (!product) return null;
 
+  const { image, name, price, description } = product;
+
   return (
     <ProductStyled>
-      <img src={product.image} alt={product.name}></img>
+      <img src={image} alt={name}></img>
       <Description>
-        <h1>{product.name}</h1>
-        <Price>p. {product.price}</Price>
-        <About>{product.description}</About>
+        <h1>{name}</h1>
+        <Price>p. {price}</Price>
+        <About>{description}</About>
         <label htmlFor="quantity">Quantity</label>
         <input
           type="number"

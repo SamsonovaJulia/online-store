@@ -17,7 +17,7 @@ function Products(goods) {
         </Img>
         <div>
           <p>{name}</p>
-          <Price>p. {Number(price)}</Price>
+          <Price>p. {price}</Price>
         </div>
       </Product>
     );
