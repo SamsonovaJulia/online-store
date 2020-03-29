@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ProductsStyled, Product, Price, Img } from "./products.styled.js";
+import {
+  ProductsStyled,
+  Product,
+  Price,
+  Img,
+  Title
+} from "./products.styled.js";
 import ParseStoreData from "../../utils/parseStoreData";
 import ProductPage from "./product-page/product-page";
 
@@ -16,7 +22,7 @@ function Products(goods) {
           <img src={hoverImage} className="img-top" alt={name}></img>
         </Img>
         <div>
-          <p>{name}</p>
+          <Title>{name}</Title>
           <Price>p. {price}</Price>
         </div>
       </Product>

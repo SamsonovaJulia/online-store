@@ -49,13 +49,22 @@ export const Img = styled.div`
     top: 0;
     left: 0;
     z-index: 99;
+    height: 100%;
+    width: 100%;
   }
 
   :hover .img-top {
     display: inline;
+    cursor: pointer;
   }
 `;
 
 export const Price = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
+`;
+
+export const Title = styled.p`
+  :hover {
+    cursor: pointer;
+  }
 `;
