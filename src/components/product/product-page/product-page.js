@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../button/button";
 import {
   ProductStyled,
@@ -8,9 +8,17 @@ import {
 } from "./product-page.styled.js";
 
 function ProductPage({ product }) {
+  const [quantity, changeQuantity] = useState(0);
+  const BasketContext = React.createContext([{}]);
+
   if (!product) return null;
 
   const { image, name, price, description } = product;
+  let addProduct;
+
+  if (quantity) {
+    addProduct = { ...product, quantity };
+  }
 
   return (
     <ProductStyled>
@@ -26,8 +34,12 @@ function ProductPage({ product }) {
           placeholder="1"
           min="1"
           max="100"
+          value={quantity}
+          onChange={event => changeQuantity(event.target.value)}
         ></input>
-        <Button text="Add to basket" />
+        <BasketContext.Provider value={addProduct}>
+          <Button text="Add to basket" />
+        </BasketContext.Provider>
       </Description>
     </ProductStyled>
   );
