@@ -11,6 +11,7 @@ export const ButtonStyled = styled.button`
 
   :hover {
     outline: none;
+    cursor: pointer;
     border: 1px solid ${({ theme }) => theme.colors.mono.black};
     color: ${({ theme }) => theme.colors.mono.black};
     background-color: ${({ theme }) => theme.colors.mono.white};

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ProductStyled = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  width: 100%;
   justify-content: center;
   align-items: center;
   font-family: ${({ theme }) => theme.fonts.body};

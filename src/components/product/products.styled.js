@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ProductsStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
+  width: 100%;
   font-family: ${({ theme }) => theme.fonts.body};
   margin-bottom: ${({ theme }) => theme.space[6]};
 `;
@@ -49,13 +49,22 @@ export const Img = styled.div`
     top: 0;
     left: 0;
     z-index: 99;
+    height: 100%;
+    width: 100%;
   }
 
   :hover .img-top {
     display: inline;
+    cursor: pointer;
   }
 `;
 
 export const Price = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
+`;
+
+export const Title = styled.p`
+  :hover {
+    cursor: pointer;
+  }
 `;
