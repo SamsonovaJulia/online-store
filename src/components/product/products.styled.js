@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ProductsStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
+  width: 100%;
   font-family: ${({ theme }) => theme.fonts.body};
   margin-bottom: ${({ theme }) => theme.space[6]};
 `;

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import instance from "./axios-order";
-import { AppStyle, Main } from "./App.styled.js";
+import { AppStyle, Main, ProductsStyle } from "./App.styled.js";
 import Header from "./components/header/header.js";
 import Products from "./components/product/products.js";
+import ProductPage from "./components/product/product-page/product-page";
 import Filter from "./components/filter/filter";
 
 function App() {
   const [storeData, setStoreData] = useState();
+  const [product, onChoose] = useState();
   useEffect(() => {
     const getStoreData = async () => {
       const response = await instance.get("categories.json");
@@ -21,7 +23,10 @@ function App() {
       <Header />
       <Main>
         <Filter />
-        <Products goods={storeData} />
+        <ProductsStyle>
+          <Products goods={storeData} onChoose={onChoose} />
+          <ProductPage product={product} />
+        </ProductsStyle>
       </Main>
     </AppStyle>
   );

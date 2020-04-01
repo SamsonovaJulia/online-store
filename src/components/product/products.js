@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ProductsStyled,
   Product,
@@ -7,16 +7,14 @@ import {
   Title
 } from "./products.styled.js";
 import ParseStoreData from "../../utils/parseStoreData";
-import ProductPage from "./product-page/product-page";
 
-function Products(goods) {
-  const [product, setProduct] = useState();
+function Products({ goods, onChoose }) {
   const goodsArray = ParseStoreData(goods);
 
   function getProduct(item) {
     const { name, image, hoverImage, price } = item;
     return (
-      <Product onClick={() => setProduct(item)} key={name}>
+      <Product onClick={() => onChoose(item)} key={name}>
         <Img>
           <img src={image} alt={name}></img>
           <img src={hoverImage} className="img-top" alt={name}></img>
@@ -29,12 +27,7 @@ function Products(goods) {
     );
   }
 
-  return (
-    <ProductsStyled>
-      {goodsArray.map(getProduct)}
-      <ProductPage product={product} />
-    </ProductsStyled>
-  );
+  return <ProductsStyled>{goodsArray.map(getProduct)}</ProductsStyled>;
 }
 
 export default Products;
