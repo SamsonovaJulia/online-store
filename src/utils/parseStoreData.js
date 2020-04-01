@@ -5,7 +5,6 @@ function ParseStoreData(goods) {
         goodsArray.push(goods[bag].products[product]);
       }
     }
-  console.log(goodsArray);
   return goodsArray;
 }
 

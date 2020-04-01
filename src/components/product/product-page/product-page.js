@@ -7,18 +7,10 @@ import {
   About
 } from "./product-page.styled.js";
 
-function ProductPage({ product }) {
-  const [quantity, changeQuantity] = useState(0);
-  const BasketContext = React.createContext([{}]);
-
+function ProductPage({ product, addToBasket }) {
+  const [quantity, changeQuantity] = useState(1);
   if (!product) return null;
-
   const { image, name, price, description } = product;
-  let addProduct;
-
-  if (quantity) {
-    addProduct = { ...product, quantity };
-  }
 
   return (
     <ProductStyled>
@@ -37,9 +29,7 @@ function ProductPage({ product }) {
           value={quantity}
           onChange={event => changeQuantity(event.target.value)}
         ></input>
-        <BasketContext.Provider value={addProduct}>
-          <Button text="Add to basket" />
-        </BasketContext.Provider>
+        <Button onClick={addToBasket} product={product} quantity={quantity} />
       </Description>
     </ProductStyled>
   );

@@ -5,14 +5,22 @@ import Header from "./components/header/header.js";
 import Products from "./components/product/products.js";
 import ProductPage from "./components/product/product-page/product-page";
 import Filter from "./components/filter/filter";
+import Basket from "./components/basket/basket";
 
-function App() {
+const BasketContext = React.createContext([{}]);
+
+const App = () => {
   const [storeData, setStoreData] = useState();
   const [product, onChoose] = useState();
+  const [basket, updateBasket] = useState([]);
+
+  const addToBasket = product => {
+    updateBasket([...basket, product]);
+  };
+
   useEffect(() => {
     const getStoreData = async () => {
       const response = await instance.get("categories.json");
-      console.log("response.data", response.data);
       setStoreData(response.data);
     };
     getStoreData();
@@ -25,11 +33,14 @@ function App() {
         <Filter />
         <ProductsStyle>
           <Products goods={storeData} onChoose={onChoose} />
-          <ProductPage product={product} />
+          <ProductPage product={product} addToBasket={addToBasket} />
         </ProductsStyle>
+        <BasketContext.Provider value={basket}>
+          <Basket />
+        </BasketContext.Provider>
       </Main>
     </AppStyle>
   );
-}
+};
 
-export default App;
+export { App, BasketContext };

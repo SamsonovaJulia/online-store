@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BasketContext } from "../../App";
 
-class Basket extends React.Component {
-//   static contextType = BasketContext;
+function Basket() {
+  const context = useContext(BasketContext);
+  console.log("BasketContext", context);
 
-  render() {
-    console.log(this.context);
-    return <div></div>;
-  }
+  return <></>;
 }
 
 export default Basket;

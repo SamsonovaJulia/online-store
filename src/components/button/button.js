@@ -1,13 +1,17 @@
 import React from "react";
 import { ButtonStyled } from "./button.styled";
-import Basket from "../basket/basket";
 
 function Button(props) {
-  function addToBasket() {
-    return <Basket />;
-  }
-
-  return <ButtonStyled onClick={addToBasket}>{props.text}</ButtonStyled>;
+  const buyProduct = {
+    name: props.product.name,
+    price: props.product.price,
+    quantity: props.quantity
+  };
+  return (
+    <ButtonStyled onClick={() => props.onClick(buyProduct)}>
+      Add to basket
+    </ButtonStyled>
+  );
 }
 
 export default Button;
