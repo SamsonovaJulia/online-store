@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../button/button";
+import AddToBasketButton from "./addToBasketButton/addToBasketButton";
 import {
   ProductStyled,
   Price,
@@ -29,7 +29,7 @@ function ProductPage({ product, addToBasket }) {
           value={quantity}
           onChange={event => changeQuantity(event.target.value)}
         ></input>
-        <Button onClick={addToBasket} product={product} quantity={quantity} />
+        <AddToBasketButton onClick={addToBasket} product={product} quantity={quantity} />
       </Description>
     </ProductStyled>
   );

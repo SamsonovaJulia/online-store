@@ -1,7 +1,7 @@
 import React from "react";
-import { ButtonStyled } from "./button.styled";
+import { ButtonStyled } from "./addToBasketButton.styled";
 
-function Button(props) {
+function AddToBasketButton(props) {
   const buyProduct = {
     name: props.product.name,
     price: props.product.price,
@@ -14,4 +14,4 @@ function Button(props) {
   );
 }
 
-export default Button;
+export default AddToBasketButton;
