@@ -10,15 +10,15 @@ import GlobalStyle from "./styles/globalStyle";
 
 WebFont.load({
   google: {
-    families: ["Titillium Web:300,400,700", "sans-serif"]
-  }
+    families: ["Titillium Web:300,400,700", "sans-serif"],
+  },
 });
 
 ReactDOM.render(
-  <ThemeProvider theme={Theme}>
-    <GlobalStyle />
-    <App />
-  </ThemeProvider>,
+    <ThemeProvider theme={Theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>,
   document.getElementById("root")
 );
 
