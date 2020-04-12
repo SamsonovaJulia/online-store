@@ -6,6 +6,7 @@ import Products from "./components/product/products.js";
 import ProductPage from "./components/product-page/product-page";
 import Filter from "./components/filter/filter";
 import Basket from "./components/basket/basket";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const BasketContext = React.createContext([{}]);
 
@@ -43,19 +44,27 @@ const App = () => {
   }, []);
 
   return (
-    <AppStyle>
-      <Header />
-      <Main>
-        <Filter />
-        <ProductsStyle>
-          <Products goods={storeData} onChoose={onChoose} />
-          <ProductPage product={product} addToBasket={addToBasket} />
-        </ProductsStyle>
-        <BasketContext.Provider value={basket}>
-          <Basket />
-        </BasketContext.Provider>
-      </Main>
-    </AppStyle>
+    <Router>
+      <AppStyle>
+        <Header />
+        <Main>
+          <Filter />
+          <ProductsStyle>
+            <Switch>
+              <Route path="/product/:id" exact>
+                <ProductPage product={product} addToBasket={addToBasket} />
+              </Route>
+              <Route path="/">
+                <Products goods={storeData} onChoose={onChoose} />
+              </Route>
+            </Switch>
+          </ProductsStyle>
+          <BasketContext.Provider value={basket}>
+            <Basket />
+          </BasketContext.Provider>
+        </Main>
+      </AppStyle>
+    </Router>
   );
 };
 
