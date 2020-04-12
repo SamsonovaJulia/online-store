@@ -9,11 +9,13 @@ import {
 } from "./products.styled.js";
 import ParseStoreData from "../../utils/parseStoreData";
 
-function Products({ goods, onChoose }) {
-  const goodsArray = ParseStoreData(goods);
+function Products({ goods, onChoose, category }) {
+  const goodsArray = ParseStoreData(goods, category);
+  console.log("goods", goods);
 
   function getProduct(item) {
     const { name, image, hoverImage, price, id } = item;
+    console.log("item", item);
     return (
       <Product onClick={() => onChoose(item)} key={name}>
         <Link to={`/product/:${id}`}>
