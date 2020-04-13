@@ -4,7 +4,7 @@ import {
   ProductStyled,
   Price,
   Description,
-  About
+  About,
 } from "./product-page.styled.js";
 
 function ProductPage({ product, addToBasket }) {
@@ -27,9 +27,13 @@ function ProductPage({ product, addToBasket }) {
           min="1"
           max="100"
           value={quantity}
-          onChange={event => changeQuantity(event.target.value)}
+          onChange={(event) => changeQuantity(event.target.value)}
         ></input>
-        <AddToBasketButton onClick={addToBasket} product={product} quantity={quantity} />
+        <AddToBasketButton
+          onClick={addToBasket}
+          product={product}
+          quantity={quantity}
+        />
       </Description>
     </ProductStyled>
   );

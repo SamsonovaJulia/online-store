@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import instance from "./axios-order";
-import { AppStyle, Main, ProductsStyle } from "./App.styled.js";
+import { AppStyle, Main, ProductsStyle, FilterStyled } from "./App.styled.js";
 import Header from "./components/header/header.js";
 import Products from "./components/product/products.js";
 import ProductPage from "./components/product-page/product-page";
-import Filter from "./components/filter/filter";
+import CategoryFilter from "./components/filter/category-filter/category-filter";
 import Basket from "./components/basket/basket";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const BasketContext = React.createContext([{}]);
 
@@ -13,6 +14,7 @@ const App = () => {
   const [storeData, setStoreData] = useState();
   const [product, onChoose] = useState();
   const [basket, updateBasket] = useState([]);
+  const [category, getCategory] = useState("category1+category2");
 
   const addToBasket = (product) => {
     if (basket.length !== 0) {
@@ -42,20 +44,37 @@ const App = () => {
     getStoreData();
   }, []);
 
+  // console.log("category", category);
   return (
-    <AppStyle>
-      <Header />
-      <Main>
-        <Filter />
-        <ProductsStyle>
-          <Products goods={storeData} onChoose={onChoose} />
-          <ProductPage product={product} addToBasket={addToBasket} />
-        </ProductsStyle>
-        <BasketContext.Provider value={basket}>
-          <Basket />
-        </BasketContext.Provider>
-      </Main>
-    </AppStyle>
+    <Router>
+      <AppStyle>
+        <Header />
+        <Main>
+          <Switch>
+            <FilterStyled>
+              {/* <Route path="/product/:category"> */}
+                <CategoryFilter getCategory={getCategory} />
+              {/* </Route> */}
+            </FilterStyled>
+            <ProductsStyle>
+              <Route path="/product/:id">
+                <ProductPage product={product} addToBasket={addToBasket} />
+              </Route>
+              <Route path="/">
+                <Products
+                  goods={storeData}
+                  onChoose={onChoose}
+                  category={category}
+                />
+              </Route>
+            </ProductsStyle>
+            <BasketContext.Provider value={basket}>
+              <Basket />
+            </BasketContext.Provider>
+          </Switch>
+        </Main>
+      </AppStyle>
+    </Router>
   );
 };
 
