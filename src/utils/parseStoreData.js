@@ -1,4 +1,5 @@
 function ParseStoreData(goods, category) {
+  console.log("goodsArray", category);
   let goodsArray = [];
   if (category === "category1+category2") {
     for (let bag in goods) {

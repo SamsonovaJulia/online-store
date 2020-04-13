@@ -10,8 +10,10 @@ import {
 import ParseStoreData from "../../utils/parseStoreData";
 
 function Products({ goods, onChoose, category }) {
+  console.log("ssss", category);
   const goodsArray = ParseStoreData(goods, category);
-  console.log("goods", goods);
+  console.log("category", category);
+  console.log("goodsArray", goodsArray);
 
   function getProduct(item) {
     const { name, image, hoverImage, price, id } = item;
@@ -32,7 +34,11 @@ function Products({ goods, onChoose, category }) {
     );
   }
 
-  return <ProductsStyled>{goodsArray.map(getProduct)}</ProductsStyled>;
+  return (
+    // <Link to={`/product/:${category}`}>
+      <ProductsStyled>{goodsArray.map(getProduct)}</ProductsStyled>
+    /* </Link> */
+  );
 }
 
 export default Products;

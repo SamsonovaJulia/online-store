@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 
 function CategoryFilter({ getCategory }) {
-  const [categoryOne, setCategoryOne] = useState();
-  const [categoryTwo, setCategoryTwo] = useState();
+  const [categoryOne, setCategoryOne] = useState("");
+  const [categoryTwo, setCategoryTwo] = useState("");
 
-  function onChangeOne(event) {
-    setCategoryOne(event.target.value);
+  function onChangeOne() {
+    if (categoryOne) {
+      setCategoryOne("");
+    } else {
+      setCategoryOne("category1");
+    }
+    // console.log("categoryOne", categoryOne);
   }
-  function onChangeTwo(event) {
-    setCategoryTwo(event.target.value);
+  function onChangeTwo() {
+    if (categoryTwo) {
+      setCategoryOne("");
+    } else {
+      setCategoryTwo("category2");
+    }
   }
   if (categoryOne && categoryTwo) {
-    const category = categoryOne + categoryTwo;
+    const category = categoryOne + "+" + categoryTwo;
     getCategory(category);
   } else if (categoryOne) {
     getCategory(categoryOne);
@@ -26,7 +35,7 @@ function CategoryFilter({ getCategory }) {
         id="category1"
         name="category1"
         value="category1"
-        onChange={() => onChangeOne}
+        onChange={onChangeOne}
       />
       <label for="category1"> category 1</label>
 
@@ -35,7 +44,7 @@ function CategoryFilter({ getCategory }) {
         id="category2"
         name="category2"
         value="category2"
-        onChange={() => onChangeTwo}
+        onChange={onChangeTwo}
       />
       <label for="category2"> category 2</label>
     </>

@@ -44,16 +44,17 @@ const App = () => {
     getStoreData();
   }, []);
 
+  // console.log("category", category);
   return (
     <Router>
       <AppStyle>
         <Header />
-        <Switch>
-          <Main>
+        <Main>
+          <Switch>
             <FilterStyled>
-              <Route path="/product/:category">
+              {/* <Route path="/product/:category"> */}
                 <CategoryFilter getCategory={getCategory} />
-              </Route>
+              {/* </Route> */}
             </FilterStyled>
             <ProductsStyle>
               <Route path="/product/:id">
@@ -70,8 +71,8 @@ const App = () => {
             <BasketContext.Provider value={basket}>
               <Basket />
             </BasketContext.Provider>
-          </Main>
-        </Switch>
+          </Switch>
+        </Main>
       </AppStyle>
     </Router>
   );
