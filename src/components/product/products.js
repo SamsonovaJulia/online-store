@@ -16,7 +16,7 @@ function Products({ goods, onChoose }) {
     const { name, image, hoverImage, price, id } = item;
     return (
       <Product onClick={() => onChoose(item)} key={name}>
-        <Link to={`/product/:${id}`}>
+        <Link to={`/product/${id}`}>
           <Img>
             <img src={image} alt={name}></img>
             <img src={hoverImage} className="img-top" alt={name}></img>
