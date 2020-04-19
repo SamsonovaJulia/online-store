@@ -6,21 +6,14 @@ import {
   Price,
   Img,
   Title,
-} from "./products.styled.js";
-import ParseStoreData from "../../utils/parseStoreData";
+} from "./product-list.styled.js";
 
-function Products({ goods, onChoose, category }) {
-  console.log("ssss", category);
-  const goodsArray = ParseStoreData(goods, category);
-  console.log("category", category);
-  console.log("goodsArray", goodsArray);
-
+function ProductList({ goodsArray, onChoose }) {
   function getProduct(item) {
     const { name, image, hoverImage, price, id } = item;
-    console.log("item", item);
     return (
       <Product onClick={() => onChoose(item)} key={name}>
-        <Link to={`/product/:${id}`}>
+        <Link to={`/product/${id}`}>
           <Img>
             <img src={image} alt={name}></img>
             <img src={hoverImage} className="img-top" alt={name}></img>
@@ -34,11 +27,7 @@ function Products({ goods, onChoose, category }) {
     );
   }
 
-  return (
-    // <Link to={`/product/:${category}`}>
-      <ProductsStyled>{goodsArray.map(getProduct)}</ProductsStyled>
-    /* </Link> */
-  );
+  return <ProductsStyled>{goodsArray.map(getProduct)}</ProductsStyled>;
 }
 
-export default Products;
+export default ProductList;
