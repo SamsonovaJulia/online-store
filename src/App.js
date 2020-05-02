@@ -42,7 +42,7 @@ const App = () => {
     getStoreData();
   }, []);
 
-  // console.log("category", category);
+  console.log("storeData", storeData);
   return (
     <Router>
       <AppStyle>
@@ -53,11 +53,8 @@ const App = () => {
               <Route path="/product/:id">
                 <ProductPage product={product} addToBasket={addToBasket} />
               </Route>
-              <Route path="/">
-                <MainPage
-                  goods={storeData}
-                  onChoose={onChoose}
-                />
+              <Route path="/" exact>
+                <MainPage goods={storeData} onChoose={onChoose} />
               </Route>
             </ProductsStyle>
             <BasketContext.Provider value={basket}>
